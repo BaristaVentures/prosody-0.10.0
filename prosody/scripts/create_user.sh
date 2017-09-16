@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "Pending create user..."
+echo "Create user: user"
+prosodyctl register user example.com user
