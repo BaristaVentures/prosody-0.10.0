@@ -148,7 +148,7 @@ storage = "sql" -- Default is "internal"
 -- For the "sql" backend, you can uncomment *one* of the below to configure:
 --sql = { driver = "SQLite3", database = "prosody.sqlite" } -- Default. 'database' is the filename.
 --sql = { driver = "MySQL", database = "prosody", username = "prosody", password = "secret", host = "localhost" }
-sql = { driver = "PostgreSQL", database = "prosody", username = "postgres", password = "prosody", host = "172.17.0.2", port= "5432" }
+sql = { driver = "PostgreSQL", database = "prosody", username = "postgres", password = "prosody", host = "prosody-db", port= "5432" }
 
 -- Logging configuration
 -- For advanced logging see http://prosody.im/doc/logging

@@ -15,7 +15,7 @@ In addition, we have some tools as `nano`, `expect` to help when we need to acce
 To build the image, you need run the following command:
 ```bash
 cd <project_path>
-docker build -t prosody-0.10.0:1.0 .
+docker build -t prosody-0.10.0:2.0 .
 ```
 
 ### Volumes
@@ -33,8 +33,13 @@ Volumes is mounted in `/prosody` directory when the image was building, It conta
 
 ## Running
 
+1. Run one image with postgres.
 ```bash
-docker run -d -v <project_path>/prosody:/prosody prosody-0.10.0:1.0
+docker run --name prosody-db -e POSTGRES_PASSWORD=prosody -e POSTGRES_DB=prosody -d postgres
+```
+2. When the postgres service is ready. run:
+```bash
+docker run --name prosody-0.10.0 -d -p 5280:5280 -p 5222:5222 -p 5269:5269 --link prosody-db:prosody-db -v <project_path>/prosody:/prosody prosody-0.10.0:2.0
 ```
 
 ### Ports
