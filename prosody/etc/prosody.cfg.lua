@@ -143,12 +143,12 @@ authentication = "internal_plain"
 -- through modules. An "sql" backend is included by default, but requires
 -- additional dependencies. See http://prosody.im/doc/storage for more info.
 
---storage = "sql" -- Default is "internal"
+storage = "sql" -- Default is "internal"
 
 -- For the "sql" backend, you can uncomment *one* of the below to configure:
 --sql = { driver = "SQLite3", database = "prosody.sqlite" } -- Default. 'database' is the filename.
 --sql = { driver = "MySQL", database = "prosody", username = "prosody", password = "secret", host = "localhost" }
---sql = { driver = "PostgreSQL", database = "prosody", username = "prosody", password = "secret", host = "localhost" }
+sql = { driver = "PostgreSQL", database = "prosody", username = "postgres", password = "prosody", host = "prosody-db", port= "5432" }
 
 -- Logging configuration
 -- For advanced logging see http://prosody.im/doc/logging
@@ -164,18 +164,6 @@ log = {
 -- Settings under each VirtualHost entry apply *only* to that host.
 
 VirtualHost "localhost"
-
-VirtualHost "example.com"
-	enabled = false -- Remove this line to enable this host
-
-	-- Assign this host a certificate for TLS, otherwise it would use the one
-	-- set in the global section (if any).
-	-- Note that old-style SSL on port 5223 only supports one certificate, and will always
-	-- use the global one.
-	ssl = {
-		key = "/etc/prosody/certs/example.com.key";
-		certificate = "/etc/prosody/certs/example.com.crt";
-	}
 
 ------ Components ------
 -- You can specify components to add hosts that provide special services,
